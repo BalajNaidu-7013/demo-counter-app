@@ -10,7 +10,7 @@ pipeline{
                 
                 script{
                     
-                    git branch: 'main', url: 'https://github.com/vikash-kumar01/mrdevops_javaapplication.git'
+                    git branch: 'main', url: 'https://github.com/BalajNaidu-7013/demo-counter-app.git'
                 }
             }
         }
@@ -44,30 +44,30 @@ pipeline{
                 }
             }
         }
-        stage('Static code analysis'){
+        // stage('Static code analysis'){
             
-            steps{
+        //     steps{
                 
-                script{
+        //         script{
                     
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
+        //             withSonarQubeEnv(credentialsId: 'sonar-api') {
                         
-                        sh 'mvn clean package sonar:sonar'
-                    }
-                   }
+        //                 sh 'mvn clean package sonar:sonar'
+        //             }
+        //            }
                     
-                }
-            }
-            stage('Quality Gate Status'){
+        //         }
+        //     }
+        //     stage('Quality Gate Status'){
                 
-                steps{
+        //         steps{
                     
-                    script{
+        //             script{
                         
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
-                    }
-                }
-            }
+        //                 waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
+        //             }
+        //         }
+        //     }
         }
         
 }
