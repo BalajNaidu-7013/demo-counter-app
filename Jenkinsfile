@@ -69,32 +69,32 @@ pipeline{
         //         }
         //     }
 
-        stage('nexus artifact uploader'){
-            steps{
-                script{
-                    def readPomVersion = readMavenPom file: 'pom.xml'
+        // stage('nexus artifact uploader'){
+        //     steps{
+        //         script{
+        //             def readPomVersion = readMavenPom file: 'pom.xml'
 
-                    def nexusRepo = readPomVersion.version.endsWith("SNAPSHOT") ? "mrdevopsapp-snapshot" : "mrdevopsapp-release"
+        //             def nexusRepo = readPomVersion.version.endsWith("SNAPSHOT") ? "mrdevopsapp-snapshot" : "mrdevopsapp-release"
 
-                    nexusArtifactUploader artifacts: 
-                    [
-                        [
-                            artifactId: 'springboot',
-                             classifier: '', 
-                             file: 'target/Uber.jar',
-                              type: 'jar'
-                        ]
-                    ], 
-                            credentialsId: 'nexus-cred', 
-                            groupId: 'com.example',
-                            nexusUrl: '54.173.227.17:8081',
-                            nexusVersion: 'nexus3',
-                            protocol: 'http', 
-                            repository: nexusRepo, 
-                            version: "${readPomVersion.version}"
-                }
-            }
-        }
+        //             nexusArtifactUploader artifacts: 
+        //             [
+        //                 [
+        //                     artifactId: 'springboot',
+        //                      classifier: '', 
+        //                      file: 'target/Uber.jar',
+        //                       type: 'jar'
+        //                 ]
+        //             ], 
+        //                     credentialsId: 'nexus-cred', 
+        //                     groupId: 'com.example',
+        //                     nexusUrl: '54.173.227.17:8081',
+        //                     nexusVersion: 'nexus3',
+        //                     protocol: 'http', 
+        //                     repository: nexusRepo, 
+        //                     version: "${readPomVersion.version}"
+        //         }
+        //     }
+        // }
         stage('docker image building'){
             steps{
                 script{
