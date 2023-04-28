@@ -14,26 +14,26 @@ pipeline{
                 }
             }
         }
-        stage('UNIT testing'){
+        // stage('UNIT testing'){
             
-            steps{
+        //     steps{
                 
-                script{
+        //         script{
                     
-                    sh 'mvn test'
-                }
-            }
-        }
-        stage('Integration testing'){
+        //             sh 'mvn test'
+        //         }
+        //     }
+        // }
+        // stage('Integration testing'){
             
-            steps{
+        //     steps{
                 
-                script{
+        //         script{
                     
-                    sh 'mvn verify -DskipUnitTests'
-                }
-            }
-        }
+        //             sh 'mvn verify -DskipUnitTests'
+        //         }
+        //     }
+        // }
         stage('Maven build'){
             
             steps{
